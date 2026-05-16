@@ -36,7 +36,8 @@ printf "\nright: $rights | wrong: $wrongs\033[1A\r"
 while :
 do
     keys=("${!dic[@]}")
-    rnd_key="${keys[RANDOM % ${#keys[@]}]}"
+    rnd_index=$(shuf -i 0-$((${#keys[@]} - 1)) -n 1)
+    rnd_key="${keys[$rnd_index]}"
     true_value="${dic[$rnd_key]}"
     printf "\033[K%s? " "$rnd_key"
     printf "\e[?25h\e[?12h" #show cursor and activate blinking
