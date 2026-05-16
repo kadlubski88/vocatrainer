@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dic_path="./voca.dic"
+dic_path="${1:-./voca.dic}"
 rights=0
 wrongs=0
 
@@ -12,6 +12,8 @@ declare -A dic=(
     ["example"]="beispiel"
 )
 EOF
+echo "Default dictionary created at $dic_path"
+exit 0
 }
 
 exit_trap() {
